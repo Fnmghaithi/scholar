@@ -59,13 +59,7 @@ class RegisterPage extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return const LoginPage();
-                          },
-                        ),
-                      );
+                      Navigator.pop(context);
                     },
                     child: const Text(
                       'LOGIN',
