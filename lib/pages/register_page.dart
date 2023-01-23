@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:scholar_chat/pages/login_page.dart';
 import 'package:scholar_chat/widgets/custom_button.dart';
 import 'package:scholar_chat/widgets/custom_textfield.dart';
 
 class RegisterPage extends StatelessWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+  static String id = 'RegisterPage';
+  RegisterPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

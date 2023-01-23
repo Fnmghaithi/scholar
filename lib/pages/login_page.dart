@@ -59,7 +59,7 @@ class LoginPage extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, 'RegisterPage');
+                      Navigator.pushNamed(context, RegisterPage.id);
                     },
                     child: const Text(
                       'REGISTER',
