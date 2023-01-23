@@ -12,66 +12,65 @@ class LoginPage extends StatelessWidget {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: Column(
-            children: <Widget>[
-              const Spacer(flex: 2),
-              Image.asset('assets/images/scholar.png'),
-              const Text(
-                'Scholar Chat',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 32,
-                  fontFamily: 'pacifico',
+          child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Image.asset('assets/images/scholar.png'),
+                const Text(
+                  'Scholar Chat',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 32,
+                    fontFamily: 'pacifico',
+                  ),
                 ),
-              ),
-              const Spacer(flex: 2),
-              Row(
-                children: const [
-                  Text(
-                    'LOGIN',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 15),
-              CustomTextField(
-                hintText: 'Email',
-              ),
-              const SizedBox(height: 10),
-              CustomTextField(
-                hintText: 'Password',
-              ),
-              const SizedBox(height: 15),
-              CustomButton(
-                buttonText: 'LOGIN',
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  const Text(
-                    'Don\'t have an account?',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, RegisterPage.id);
-                    },
-                    child: const Text(
-                      'REGISTER',
+                Row(
+                  children: const [
+                    Text(
+                      'LOGIN',
                       style: TextStyle(
-                        color: Color(0xFFC7EDE6),
+                        color: Colors.white,
+                        fontSize: 24,
                       ),
                     ),
-                  ),
-                ],
-              ),
-              const Spacer(flex: 3),
-            ],
+                  ],
+                ),
+                const SizedBox(height: 15),
+                CustomTextField(
+                  hintText: 'Email',
+                ),
+                const SizedBox(height: 10),
+                CustomTextField(
+                  hintText: 'Password',
+                ),
+                const SizedBox(height: 15),
+                CustomButton(
+                  buttonText: 'LOGIN',
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    const Text(
+                      'Don\'t have an account?',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, RegisterPage.id);
+                      },
+                      child: const Text(
+                        'REGISTER',
+                        style: TextStyle(
+                          color: Color(0xFFC7EDE6),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
