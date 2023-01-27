@@ -11,7 +11,12 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'field is required';
+        }
+      },
       style: const TextStyle(
         color: Colors.white,
       ),
