@@ -21,7 +21,7 @@ class ScholarChat extends StatelessWidget {
     return MaterialApp(
       routes: {
         'LoginPage': (context) {
-          return const LoginPage();
+          return LoginPage();
         },
         RegisterPage.id: (context) => RegisterPage(),
       },

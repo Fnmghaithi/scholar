@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:scholar_chat/helper/show_snack_bar.dart';
 import 'package:scholar_chat/widgets/custom_button.dart';
 import 'package:scholar_chat/widgets/custom_textfield.dart';
 
@@ -55,14 +56,14 @@ class _RegisterPageState extends State<RegisterPage> {
                       ],
                     ),
                     const SizedBox(height: 15),
-                    CustomTextField(
+                    CustomTextFormField(
                       hintText: 'Email',
                       onChanged: (value) {
                         email = value;
                       },
                     ),
                     const SizedBox(height: 10),
-                    CustomTextField(
+                    CustomTextFormField(
                       hintText: 'Password',
                       onChanged: (value) {
                         password = value;
@@ -133,16 +134,6 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
           ),
-        ),
-      ),
-    );
-  }
-
-  void showSnackBar(BuildContext context, String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          message,
         ),
       ),
     );
