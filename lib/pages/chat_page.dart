@@ -26,8 +26,40 @@ class ChatPage extends StatelessWidget {
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
-      body: ListView.builder(
-        itemBuilder: (context, index) => ChatBubble(),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemBuilder: (context, index) => ChatBubble(),
+            ),
+          ),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: 'Send Message',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16.0),
+                    borderSide: const BorderSide(
+                      color: kPrimaryColor,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16.0),
+                    borderSide: const BorderSide(
+                      color: kPrimaryColor,
+                    ),
+                  ),
+                  suffixIcon: const Icon(
+                    Icons.send,
+                    color: kPrimaryColor,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
