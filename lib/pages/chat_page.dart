@@ -13,6 +13,7 @@ class ChatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String email = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -46,9 +47,15 @@ class ChatPage extends StatelessWidget {
                   child: ListView.builder(
                     controller: _controller,
                     itemCount: messagesList.length,
-                    itemBuilder: (context, index) => ChatBubble(
-                      message: messagesList[index],
-                    ),
+                    itemBuilder: (context, index) {
+                      return messagesList[index].id == email
+                          ? ChatBubble(
+                              message: messagesList[index],
+                            )
+                          : ChatBubbleForAFriend(
+                              message: messagesList[index],
+                            );
+                    },
                     reverse: true,
                   ),
                 ),
@@ -58,13 +65,14 @@ class ChatPage extends StatelessWidget {
                     child: TextField(
                       controller: controller,
                       onSubmitted: (value) async {
+                        controller.clear();
                         await messages.add(
                           {
                             kMessageField: value,
                             kCreatedAtField: DateTime.now(),
+                            'id': email,
                           },
                         );
-                        controller.clear();
                         await _controller.animateTo(
                           0,
                           duration: const Duration(milliseconds: 500),

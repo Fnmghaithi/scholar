@@ -5,3 +5,4 @@ const kLogo = 'assets/images/scholar.png';
 const kMessagesCollections = 'messages';
 const kMessageField = 'message';
 const kCreatedAtField = 'createdAt';
+const kIdField = 'id';
