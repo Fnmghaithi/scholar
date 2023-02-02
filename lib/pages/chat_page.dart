@@ -9,6 +9,7 @@ class ChatPage extends StatelessWidget {
   CollectionReference messages =
       FirebaseFirestore.instance.collection(kMessagesCollections);
   TextEditingController controller = TextEditingController();
+  final _controller = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +32,8 @@ class ChatPage extends StatelessWidget {
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
-      body: FutureBuilder<QuerySnapshot>(
-        future: messages.get(),
+      body: StreamBuilder<QuerySnapshot>(
+        stream: messages.orderBy(kCreatedAtField, descending: true).snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             List<Message> messagesList = [];
@@ -43,10 +44,12 @@ class ChatPage extends StatelessWidget {
               children: [
                 Expanded(
                   child: ListView.builder(
+                    controller: _controller,
                     itemCount: messagesList.length,
                     itemBuilder: (context, index) => ChatBubble(
                       message: messagesList[index],
                     ),
+                    reverse: true,
                   ),
                 ),
                 SafeArea(
@@ -57,10 +60,16 @@ class ChatPage extends StatelessWidget {
                       onSubmitted: (value) async {
                         await messages.add(
                           {
-                            'message': value,
+                            kMessageField: value,
+                            kCreatedAtField: DateTime.now(),
                           },
                         );
                         controller.clear();
+                        await _controller.animateTo(
+                          0,
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.easeOut,
+                        );
                       },
                       decoration: InputDecoration(
                         hintText: 'Send Message',
